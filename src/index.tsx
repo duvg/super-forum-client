@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import ErrorBoundary from './components/ErrorBoundary';
+import configureStore from './store/configureStore';
+import { Provider } from 'react-redux';
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={configureStore()}>
+    <BrowserRouter>
+    <ErrorBoundary>{[<App key="App" />]}</ErrorBoundary>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 
